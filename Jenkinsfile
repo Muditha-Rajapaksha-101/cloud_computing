@@ -5,7 +5,9 @@ pipeline {
         stage('cloud-com-stage-build') {
             steps {
                 echo 'Building..'
-                echo 'build 2'
+                Maven(){
+                    sh 'mvn clean install'
+                }
             }
         }
         stage('cloud-com-stage-test') {
