@@ -5,6 +5,7 @@ pipeline {
         stage('cloud-com-stage-build') {
             steps {
                 echo 'Building..'
+                echo 'build 2'
             }
         }
         stage('cloud-com-stage-test') {
