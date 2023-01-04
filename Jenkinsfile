@@ -5,7 +5,7 @@ pipeline {
         stage('cloud-com-stage-build') {
             steps {
                 echo 'Building..'
-                Maven(){
+                maven(){
                     sh 'mvn clean install'
                 }
             }
