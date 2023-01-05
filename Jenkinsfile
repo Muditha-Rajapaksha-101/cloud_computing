@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     tools{
-        Maven 'maven'
+        maven 'maven-3.8.7' 
     }
     
     parameters{
@@ -20,7 +20,8 @@ pipeline {
         stage('cloud-com-stage-build') {
             steps {
                 echo 'Building..'
-                sh 'mvn -Dmaven.test.failure.ignore=true install'    
+                //sh 'mvn -Dmaven.test.failure.ignore=true install'    
+                 sh 'mvn clean package'
             }
         }
         
