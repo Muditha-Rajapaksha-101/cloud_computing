@@ -5,10 +5,7 @@ pipeline {
         maven 'maven' 
     }
     
-    parameters{
-      
-    }
-    
+   
     stages {
         stage('cloud-com-stage-init') {
             steps {
