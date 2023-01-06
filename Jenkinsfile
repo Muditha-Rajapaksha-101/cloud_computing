@@ -1,7 +1,9 @@
 pipeline {
     agent any
     
-    
+    environment {
+        registryCredential = "docker"
+    }
     stages {
         stage('cloud-com-stage-init') {
             steps {
@@ -31,12 +33,24 @@ pipeline {
             }
         }
         
-        stage('cloud-com-stage-deploy') {
-            steps {
-                echo 'Deploying....'
+        
+    stage(‘Deploy’) {
+        steps{
+            script {
+                docker.withRegistry( "https://registry.hub.docker.com", registryCredential ) {
+                    // dockerImage.push()
+                    app.push("latest")
+                }
             }
         }
     }
+    
+    
+    
+    
+    }
+    
+    
     post{
         always{
             echo '.......'
@@ -52,4 +66,8 @@ pipeline {
         }
     
     }
+    
+    
+    
+    
 }
