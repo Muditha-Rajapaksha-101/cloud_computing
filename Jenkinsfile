@@ -28,8 +28,10 @@ pipeline {
             steps{
                 script {
                     //app = docker.build("course-work.jar:/course-work")
-                    sh 'docker build -t course-work.jar .'
-                    sh 'docker tag course-work.jar:latest muditha101/course-work:latest  '
+                    //sh 'docker build -t course-work.jar .'
+                    //sh 'docker tag course-work.jar:latest muditha101/course-work:latest  '
+                    sh 'docker build -t course-work.jar:latest muditha101/course-work:latest .'
+                    sh 'ds'
                 }
             }
         }
