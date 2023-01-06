@@ -15,6 +15,7 @@ pipeline {
                 echo 'Building..'
                 //sh 'mvn -Dmaven.test.failure.ignore=true install'    
                 // sh 'mvn clean package'
+                 sh 'mvn clean install'
             }
         }
         
