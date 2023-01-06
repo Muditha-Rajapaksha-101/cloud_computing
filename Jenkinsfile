@@ -22,10 +22,12 @@ pipeline {
             }
         }
         
-        stage('cloud-com-stage-test') {
-            steps {
-                echo 'Testing..'
-                echo 'Testing..'
+      stage('cloud-com-stage-createImage') {
+            steps{
+                script {
+                    //app = docker.build("docker build -t course-work.jar .")
+                    sh 'docker build -t course-work.jar .'
+                }
             }
         }
         
