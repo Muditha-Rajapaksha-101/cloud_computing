@@ -27,8 +27,9 @@ pipeline {
       stage('cloud-com-stage-createImage') {
             steps{
                 script {
-                    app = docker.build("course-work.jar:/course-work")
-                    //sh 'docker build -t course-work.jar .'
+                    //app = docker.build("course-work.jar:/course-work")
+                    sh 'docker build -t course-work.jar .'
+                    sh 'docker tag course-work.jar:latest muditha101/course-work:latest  '
                 }
             }
         }
@@ -37,9 +38,14 @@ pipeline {
     stage(‘Deploy’) {
         steps{
             script {
-                docker.withRegistry( "https://registry.hub.docker.com", registryCredential ) {
-                    // dockerImage.push()
-                    app.push("latest")
+                //docker.withRegistry( "https://registry.hub.docker.com", registryCredential ) {
+               //     // dockerImage.push()
+               //     app.push("latest")
+               // }
+                
+                withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+                    sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+                    sh 'docker push muditha101/course-work:latest'
                 }
             }
         }
