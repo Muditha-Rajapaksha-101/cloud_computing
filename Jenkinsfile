@@ -25,6 +25,7 @@ pipeline {
         stage('cloud-com-stage-test') {
             steps {
                 echo 'Testing..'
+                echo 'Testing..'
             }
         }
         
