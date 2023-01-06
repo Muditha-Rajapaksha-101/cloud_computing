@@ -25,8 +25,8 @@ pipeline {
       stage('cloud-com-stage-createImage') {
             steps{
                 script {
-                    //app = docker.build("docker build -t course-work.jar .")
-                    sh 'docker build -t course-work.jar .'
+                    app = docker.build("course-work.jar:/course-work")
+                    //sh 'docker build -t course-work.jar .'
                 }
             }
         }
