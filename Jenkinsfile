@@ -1,11 +1,7 @@
 pipeline {
     agent any
     
-    tools{
-        maven 'maven' 
-    }
     
-   
     stages {
         stage('cloud-com-stage-init') {
             steps {
@@ -18,7 +14,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 //sh 'mvn -Dmaven.test.failure.ignore=true install'    
-                 sh 'mvn clean package'
+                // sh 'mvn clean package'
             }
         }
         
